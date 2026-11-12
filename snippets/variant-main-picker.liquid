@@ -94,17 +94,42 @@
             {{ option_id_attribute }}
           >
             <legend>
-              {{ product_option.name | escape -}}
-              {%- if variant_style == 'swatch' -%}
-                <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
-              {%- endif %}
+              {{ product_option.name | escape }}:
+              <span class="variant-option__selected-value">{{ product_option.selected_value }}</span>
             </legend>
             {%- for product_option_value in product_option.values -%}
               {% if product_option_value.size > longest_value and option_id_attribute %}
                 {% assign longest_value = product_option_value.size %}
               {% endif %}
+              {% liquid
+                assign option_position_key = 'option' | append: product_option.position
+                assign option_variant = product_option_value.variant
+
+                if option_variant == blank or option_variant.featured_media == blank
+                  for v in product_resource.variants
+                    if v[option_position_key] == product_option_value.name and v.featured_media
+                      assign option_variant = v
+                      break
+                    endif
+                  endfor
+                endif
+
+                if option_variant == blank
+                  for v in product_resource.variants
+                    if v[option_position_key] == product_option_value.name
+                      assign option_variant = v
+                      break
+                    endif
+                  endfor
+                endif
+
+                assign variant_image = option_variant.featured_media
+                if variant_image == blank and product_option_value.swatch.image
+                  assign variant_image = product_option_value.swatch.image
+                endif
+              %}
               <label
-                class="variant-option__button-label{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}"
+                class="variant-option__button-label{% if variant_image != blank %} variant-option__button-label--has-image{% endif %}{% if variant_style == 'swatch' %} variant-option__button-label--has-swatch{% endif %}"
               >
                 <input
                   type="radio"
@@ -148,6 +173,19 @@
                     variant_image: featured_media,
                     mode: 'unscaled'
                   %}
+                {% elsif variant_image != blank %}
+                  <div class="variant-card">
+                    <div class="variant-card__image-wrapper">
+                      {{
+                        variant_image
+                        | image_url: width: 140
+                        | image_tag: loading: 'lazy', alt: product_option_value.name, class: 'variant-card__image'
+                      }}
+                    </div>
+                    {% if option_variant.price %}
+                      <span class="variant-card__price">{{ option_variant.price | money }}</span>
+                    {% endif %}
+                  </div>
                 {% else %}
                   {% if product_option_value.available == true %}
                     <span

@@ -229,6 +229,11 @@ export default class VariantPicker extends Component {
             radios[newPreviousIndex].dataset.currentChecked = 'false';
           }
 
+          const legendValue = fieldset.querySelector('.variant-option__selected-value');
+          if (legendValue && target.value) {
+            legendValue.textContent = target.value;
+          }
+
           this.updateFieldsetCss(fieldsetIndex);
         }
       }

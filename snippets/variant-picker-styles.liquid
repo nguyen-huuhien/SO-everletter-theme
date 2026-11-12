@@ -172,13 +172,13 @@
 
   /* Checked / Active Pill */
   .variant-picker .variant-option__button-label:has(:checked) {
-    background-color: var(--color-selected-variant-background, #000000) !important;
-    border: 1px solid var(--color-selected-variant-border, #000000) !important;
-    color: var(--color-selected-variant-text, #ffffff) !important;
+    background-color: #007185 !important;
+    border: 1px solid #007185 !important;
+    color: #ffffff !important;
   }
 
   .variant-picker .variant-option__button-label:has(:checked) .variant-option__button-label__text {
-    color: var(--color-selected-variant-text, #ffffff) !important;
+    color: #ffffff !important;
     font-weight: 500 !important;
   }
 
@@ -194,7 +194,7 @@
   }
 
   .variant-picker .variant-option__button-label:not(:has(:checked)):hover {
-    border-color: #000000 !important;
+    border-color: #007185 !important;
     background-color: #f7f7f7 !important;
   }
 
@@ -221,5 +221,91 @@
   .variant-picker .variant-option__button-label svg.variant-option__strikethrough line {
     stroke: #888888;
     stroke-width: 1px;
+  }
+
+  /* Title above variant cards (Option name + bold selected value) */
+  .variant-picker .variant-option legend .variant-option__selected-value {
+    font-weight: 700;
+    color: var(--color-foreground, #0f1111);
+    margin-left: 4px;
+  }
+
+  /* Amazon-Style Variant Image Cards */
+  .variant-picker .variant-option__button-label.variant-option__button-label--has-image {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: auto !important;
+    min-width: 66px !important;
+    height: auto !important;
+    min-height: unset !important;
+    padding: 5px !important;
+    border-radius: 8px !important;
+    background-color: #ffffff !important;
+    border: 1px solid #d5d9d9 !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+  }
+
+  .variant-picker .variant-option__button-label.variant-option__button-label--has-image .variant-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 4px;
+  }
+
+  .variant-picker .variant-option__button-label.variant-option__button-label--has-image .variant-card__image-wrapper {
+    width: 58px;
+    height: 58px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f7f7;
+  }
+
+  .variant-picker .variant-option__button-label.variant-option__button-label--has-image .variant-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+  }
+
+  /* Price under the image */
+  .variant-picker .variant-option__button-label.variant-option__button-label--has-image .variant-card__price {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #0f1111 !important;
+    line-height: 1.2 !important;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Unselected Hover State - Amazon style */
+  .variant-picker .variant-option__button-label.variant-option__button-label--has-image:not(:has(:checked)):hover {
+    border-color: #888888 !important;
+    background-color: #ffffff !important;
+  }
+
+  /* Active / Selected Card - Amazon Blue Border */
+  .variant-picker .variant-option__button-label.variant-option__button-label--has-image:has(:checked) {
+    border: 2px solid #007185 !important;
+    box-shadow: 0 0 0 1px #007185, 0 0 4px rgba(0, 113, 133, 0.3) !important;
+    padding: 4px !important; /* adjust for 2px border */
+    background-color: #ffffff !important;
+  }
+
+  .variant-picker .variant-option__button-label.variant-option__button-label--has-image:has(:checked) .variant-card__price {
+    color: #0f1111 !important;
   }
 {% endstylesheet %}
