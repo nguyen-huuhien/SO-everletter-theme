@@ -103,4 +103,123 @@
     text-align: right;
     justify-content: right;
   }
+
+  /* Compact Pill Variant Buttons (Artic Angel style) */
+  .variant-picker .variant-option + .variant-option {
+    margin-top: 14px;
+  }
+
+  .variant-picker .variant-option legend,
+  .variant-picker .variant-option--dropdowns > label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--variant-option-label-color, var(--color-foreground, #111));
+    letter-spacing: normal;
+  }
+
+  .variant-picker .variant-option--buttons,
+  .variant-picker .variant-option--equal-width-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    grid-template-columns: none !important;
+    gap: 10px !important;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .variant-picker .variant-option__button-label {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    min-width: unset !important;
+    min-height: unset !important;
+    height: 38px !important;
+    flex: 0 0 auto !important;
+    padding: 0 20px !important;
+    border-radius: 9999px !important;
+    font-size: var(--font-paragraph--size, 15px) !important;
+    line-height: 1 !important;
+    font-weight: 400 !important;
+    letter-spacing: normal !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .variant-picker .variant-option__button-label__text {
+    font-size: var(--font-paragraph--size, 15px) !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    z-index: 2 !important;
+  }
+
+  /* Hide Horizon's animated sliding pill & pseudo borders */
+  .variant-picker .variant-option__button-label__pill {
+    display: none !important;
+  }
+
+  .variant-picker .variant-option__button-label::before,
+  .variant-picker .variant-option__button-label::after {
+    display: none !important;
+  }
+
+  /* Checked / Active Pill */
+  .variant-picker .variant-option__button-label:has(:checked) {
+    background-color: var(--color-selected-variant-background, #000000) !important;
+    border: 1px solid var(--color-selected-variant-border, #000000) !important;
+    color: var(--color-selected-variant-text, #ffffff) !important;
+  }
+
+  .variant-picker .variant-option__button-label:has(:checked) .variant-option__button-label__text {
+    color: var(--color-selected-variant-text, #ffffff) !important;
+    font-weight: 500 !important;
+  }
+
+  /* Unchecked Pill */
+  .variant-picker .variant-option__button-label:not(:has(:checked)) {
+    background-color: var(--color-variant-background, #ffffff) !important;
+    border: 1px solid var(--color-variant-border, #222222) !important;
+    color: var(--color-variant-text, #111111) !important;
+  }
+
+  .variant-picker .variant-option__button-label:not(:has(:checked)) .variant-option__button-label__text {
+    color: var(--color-variant-text, #111111) !important;
+  }
+
+  .variant-picker .variant-option__button-label:not(:has(:checked)):hover {
+    border-color: #000000 !important;
+    background-color: #f7f7f7 !important;
+  }
+
+  /* Unavailable / Sold Out Pill */
+  .variant-picker .variant-option__button-label:has([data-option-available='false']) {
+    opacity: 0.6;
+    background-color: #fafafa !important;
+    border-color: #e0e0e0 !important;
+  }
+
+  .variant-picker .variant-option__button-label:has([data-option-available='false']) .variant-option__button-label__text {
+    color: #888888 !important;
+  }
+
+  .variant-picker .variant-option__button-label svg.variant-option__strikethrough {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .variant-picker .variant-option__button-label svg.variant-option__strikethrough line {
+    stroke: #888888;
+    stroke-width: 1px;
+  }
 {% endstylesheet %}
