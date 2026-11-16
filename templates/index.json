@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h5>Our Fall Sale Is Here!</h5>",
+            "text": "<h4>Personalized Gifts & Jewelry</h4>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -41,8 +41,9 @@
         "text_wf7FM8": {
           "type": "text",
           "name": "t:names.heading",
+          "disabled": true,
           "settings": {
-            "text": "",
+            "text": "<h4>Fall Sale</h4>",
             "width": "fit-content",
             "max_width": "none",
             "alignment": "left",
