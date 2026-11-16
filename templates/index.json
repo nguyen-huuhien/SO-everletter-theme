@@ -349,7 +349,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<p>Our new products</p>",
+                "text": "<p>Featured Personalized Gifts</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
