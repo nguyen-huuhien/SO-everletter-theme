@@ -42,7 +42,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Get 10% OFF your entire order! Use Promo Code \"DAD10\" at checkout.</p>",
+            "text": "",
             "width": "fit-content",
             "max_width": "none",
             "alignment": "left",
